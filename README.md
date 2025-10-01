@@ -212,8 +212,8 @@ dotnet run
 ```
 
 ### Access Points
-- **Swagger UI**: https://localhost:5001 (or http://localhost:5000)
-- **API Base URL**: https://localhost:5001/api/exchange
+- **Swagger UI**: http://localhost:5169
+- **API Base URL**: http://localhost:5169/api/exchange
 
 ## 🔧 Configuration
 
