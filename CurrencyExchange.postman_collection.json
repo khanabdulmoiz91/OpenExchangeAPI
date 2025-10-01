@@ -1,0 +1,142 @@
+{
+  "info": {
+    "name": "Currency Exchange API",
+    "description": "Collection for testing Currency Exchange API endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Convert Currency",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fromCurrency\": \"USD\",\n  \"toCurrency\": \"EUR\",\n  \"amount\": 100\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/exchange/convert",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "exchange", "convert"]
+        },
+        "description": "Convert an amount from one currency to another"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Exchange Rates",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/exchange/rates/USD",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "exchange", "rates", "USD"]
+        },
+        "description": "Get all exchange rates for a base currency"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Conversion History",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/exchange/history?limit=10",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "exchange", "history"],
+          "query": [
+            {
+              "key": "limit",
+              "value": "10"
+            }
+          ]
+        },
+        "description": "Get recent conversion history"
+      },
+      "response": []
+    },
+    {
+      "name": "Convert Invalid Currency",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fromCurrency\": \"XXX\",\n  \"toCurrency\": \"EUR\",\n  \"amount\": 100\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/exchange/convert",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "exchange", "convert"]
+        },
+        "description": "Test error handling with invalid currency"
+      },
+      "response": []
+    },
+    {
+      "name": "Convert Negative Amount",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fromCurrency\": \"USD\",\n  \"toCurrency\": \"EUR\",\n  \"amount\": -100\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/exchange/convert",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "exchange", "convert"]
+        },
+        "description": "Test validation with negative amount"
+      },
+      "response": []
+    },
+    {
+      "name": "Convert Same Currency",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fromCurrency\": \"USD\",\n  \"toCurrency\": \"USD\",\n  \"amount\": 100\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/exchange/convert",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "exchange", "convert"]
+        },
+        "description": "Test converting same currency"
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://localhost:5169",
+      "type": "string"
+    }
+  ]
+}
